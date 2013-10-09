@@ -3,11 +3,24 @@
   <groupId>FireRDA</groupId>
   <artifactId>FireRDA</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<spring.version>3.2.4.RELEASE</spring.version>
+  </properties>
   <dependencies>
 	<dependency>
 		<groupId>org.apache.velocity</groupId>
 		<artifactId>velocity</artifactId>
 		<version>1.7</version>
+	</dependency>
+	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
 	</dependency>
   </dependencies>
 </project>
