@@ -1,5 +1,6 @@
 package pivotal.fire.tools.firerda.spring;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -22,11 +23,11 @@ public class RDAReporter
 	      ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("query-beans.xml");
 	      
 	      QueryInvoker invoker = (QueryInvoker) ctx.getBean("queryInvoker");
-//	      logger.log
-//	        (Level.INFO, String.format("Total Number of Queries to invoke: %s\n", 
-//	                                   invoker.getQueryCount()));
-//	    
-//	      invoker.run();
+	      logger.log
+	        (Level.INFO, String.format("Total Number of Queries to invoke: %s\n", 
+	                                   invoker.getQueryCount()));
+	    
+	      invoker.run();
 	      
 	      logger.exiting("RDA", "run");    
 	  }
