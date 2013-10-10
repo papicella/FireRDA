@@ -18,7 +18,13 @@
       </list>
     </property>
   </bean>
-  
+
+  <bean id="query2" class="pivotal.fire.tools.firerda.spring.queries.GenericQuery">
+    <property name="MBeanName">
+      <value>com.vmware.sqlfire.internal:type=JDBC,system=c013800d-0141-a213-1a80-000004253380</value>
+    </property>
+  </bean>
+   
   <!--  
     This defines the Invoker object, which gets passed 
     a reference to the ServerConnection AND the list of queries
@@ -28,6 +34,7 @@
     <property name="rdaQueries">
       <list>
         <ref bean="query1"/>
+        <ref bean="query2"/>
       </list>
     </property>
   </bean> 

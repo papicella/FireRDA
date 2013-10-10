@@ -33,6 +33,7 @@ public class FireConnection extends ServerConnectionBase
 	  {
 	    if (instance == null)
 	    {
+	      
 	      Properties props = new Properties();
 	      URL url = ClassLoader.getSystemResource("server.properties");
 	      props.load(url.openStream());
