@@ -8,6 +8,35 @@
         factory-method="getFireConnection" scope="singleton">
   </bean>
   
+  <bean id="query1" class="pivotal.fire.tools.firerda.spring.queries.GenericQuery">
+    <property name="MBeanName">
+      <value>GemFire:service=Region,name=/SYSSTAT,type=Member,member=127.0.0.1(4098)-30181</value>
+    </property>
+    <property name="nukedAttributes">
+      <list>
+        <value>RegionType</value>  
+      </list>
+    </property>
+  </bean>
   
+  <!--  
+    This defines the Invoker object, which gets passed 
+    a reference to the ServerConnection AND the list of queries
+  -->
+  <bean id="queryInvoker" class="pivotal.fire.tools.firerda.spring.QueryInvoker">
+    <property name="serverConnection" ref="serverConnection"/>
+    <property name="rdaQueries">
+      <list>
+        <ref bean="query1"/>
+      </list>
+    </property>
+  </bean> 
+  
+  <!--  
+   Bean used to list of MBeans available for use
+   -->
+  <bean id="showMBeans" class="pivotal.fire.tools.firerda.spring.MBeanViewer">
+    <property name="serverConnection" ref="serverConnection"/>
+  </bean>
   
 </beans>

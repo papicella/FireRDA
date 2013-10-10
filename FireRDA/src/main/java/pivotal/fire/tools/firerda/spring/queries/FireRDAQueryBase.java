@@ -40,12 +40,12 @@ public abstract class FireRDAQueryBase implements FireRDAQuery
 			objectName = createObjectName(this.mBeanName);
 	    	List<Map> attrs = createAttributeData(mbs, objectName);
 	    	
-	    	writer.write(String.format("Attributes [Size = %s]", attrs.size()));
+	    	writer.write(String.format("Attributes [Size = %s]\n\n", attrs.size()));
 	    	
 	    	for (Map m: attrs)
 	    	{
 	    		writer.write
-	    		  (String.format("%s (%s) %s %s %s",
+	    		  (String.format("%s (%s) %s %s %s\n",
 	    				         m.get("spacer1"),
 	    				         m.get("type"),
 	    				         m.get("name"),
