@@ -10,18 +10,18 @@
   
   <bean id="query1" class="pivotal.fire.tools.firerda.spring.queries.GenericQuery">
     <property name="MBeanName">
-      <value>GemFire:service=Region,name=/SYSSTAT,type=Member,member=127.0.0.1(4098)-30181</value>
+      <value>GemFire:service=Region,name=/departments,type=Member,member=server1</value>
     </property>
     <property name="nukedAttributes">
       <list>
-        <value>RegionType</value>  
+        <value>GatewayEnabled</value>  
       </list>
     </property>
   </bean>
 
   <bean id="query2" class="pivotal.fire.tools.firerda.spring.queries.GenericQuery">
     <property name="MBeanName">
-      <value>com.vmware.sqlfire.internal:type=JDBC,system=c013800d-0141-a213-1a80-000004253380</value>
+      <value>GemFire:service=Region,name=/employees,type=Member,member=server1</value>
     </property>
   </bean>
    
