@@ -38,7 +38,29 @@
       </list>
     </property>
   </bean> 
-  
+
+  <!--  
+    This defines the Periodic Invoker object, which gets passed 
+    a reference to the ServerConnection AND the list of queries and 
+    how many runs and pause time between runs
+  -->
+  <bean id="periodicQueryInvoker" class="pivotal.fire.tools.firerda.spring.PeriodicQueryInvoker">
+    <property name="serverConnection" ref="serverConnection"/>
+    <property name="numOfIterations">
+      <value>2</value>
+    </property>
+    <!-- defined in seconds -->
+    <property name="pauseBetweenIterations">
+      <value>15</value>
+    </property>
+    <property name="rdaQueries">
+      <list>
+        <ref bean="query1"/>
+        <ref bean="query2"/>
+      </list>
+    </property>
+  </bean> 
+   
   <!--  
    Bean used to list of MBeans available for use
    -->

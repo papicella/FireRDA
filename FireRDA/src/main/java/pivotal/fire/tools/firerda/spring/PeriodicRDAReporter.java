@@ -1,26 +1,21 @@
 package pivotal.fire.tools.firerda.spring;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * @author  Pas Apicella
- * @version 1.0 
- */
-public class RDAReporter 
+public class PeriodicRDAReporter 
 {
 	  final Logger logger = Logger.getLogger(this.getClass().getName());
 
-	  public void run () 
+	  public void run () throws InterruptedException 
 	  {    
 	      logger.entering("RDA", "run");
 	      
 	      ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("query-beans.xml");
 	      
-	      QueryInvoker invoker = (QueryInvoker) ctx.getBean("queryInvoker");
+	      PeriodicQueryInvoker invoker = (PeriodicQueryInvoker) ctx.getBean("periodicQueryInvoker");
 	      logger.log
 	        (Level.INFO, String.format("Total Number of Queries to invoke: %s\n", 
 	                                   invoker.getQueryCount()));
@@ -30,9 +25,9 @@ public class RDAReporter
 	      logger.exiting("RDA", "run");    
 	  }
 
-	  public static void main(String[] args)
+	  public static void main(String[] args) throws InterruptedException
 	  {
-	    RDAReporter rda = new RDAReporter();
+		PeriodicRDAReporter rda = new PeriodicRDAReporter();
 	    rda.run();
 	  }
 }
