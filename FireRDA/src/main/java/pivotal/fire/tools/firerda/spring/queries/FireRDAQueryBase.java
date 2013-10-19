@@ -20,7 +20,7 @@ import pivotal.fire.tools.firerda.spring.exception.FireRDAException;
 
 public abstract class FireRDAQueryBase implements FireRDAQuery
 {
-	private String mBeanName = null;
+	protected String mBeanName = null;
 	private List<String> nukedAttributes = new ArrayList<String>();
 	  
 	public FireRDAQueryBase()
@@ -29,30 +29,15 @@ public abstract class FireRDAQueryBase implements FireRDAQuery
 	
     public Object invoke(MBeanServerConnection mbs) throws FireRDAException
     {
-    	StringWriter writer = new StringWriter();
-    	
-    	writer.write(String.format("*** [MBean: %s] ***\n\n", this.mBeanName));
+
+    	List<Map> attrs = null;
     	
     	ObjectName objectName = null;
     	
 		try 
 		{
 			objectName = createObjectName(this.mBeanName);
-	    	List<Map> attrs = createAttributeData(mbs, objectName);
-	    	
-	    	writer.write(String.format("Attributes [Size = %s]\n\n", attrs.size()));
-	    	
-	    	for (Map m: attrs)
-	    	{
-	    		writer.write
-	    		  (String.format("%s (%s) %s %s %s\n",
-	    				         m.get("spacer1"),
-	    				         m.get("type"),
-	    				         m.get("name"),
-	    				         m.get("spacer2"),
-	    				         m.get("value")));
-	    	}
-	    	
+	    	attrs = createAttributeData(mbs, objectName);	    	
 	    	
 		} 
 		catch (Exception e) 
@@ -62,7 +47,7 @@ public abstract class FireRDAQueryBase implements FireRDAQuery
 		}
 
     	
-    	return writer;
+    	return attrs;
     }
     
     public void setMBeanName(String mBeanName)
