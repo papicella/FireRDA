@@ -25,5 +25,6 @@ public class JMXConnectionTest
 	    }
 	    
 	    jmxConn.close();
+
 	  }
 }
